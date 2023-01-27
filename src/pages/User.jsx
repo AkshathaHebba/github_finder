@@ -9,11 +9,13 @@ import RepoList from "../components/repos/RepoList";
 function User(){
     const {getUser, user, loading, getUserRepos, repos} = useContext(GitHubContext)
     const params = useParams()
-    console.log('-->',params);
     useEffect(() => {
-        console.log('-->inside useEffect',params);
         getUser(params.login)
         getUserRepos(params.login)
+    }, [])
+
+    useEffect(() => {
+        console.log('params.login', params.login)
     }, [])
 
     const {
